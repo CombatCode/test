@@ -7,7 +7,7 @@
             <figcaption class="input-prepend" ng-class="{example: task.example}">
                 <strong class="hint" ng-show="task.example">Example</strong>
                 <strong>{{ $index + 1 }}.</strong>
-                <input class="span2" type="text" ng-model="task.response">
+                <input class="span2" type="text" ng-disabled="task.example" ng-model="task.response">
                 <div class="status" ng-switch on="task.status">
                     <i class="icon success" ng-switch-when="success"></i>
                     <i class="icon fail" ng-switch-when="fail"></i>
