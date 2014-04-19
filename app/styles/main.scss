@@ -135,6 +135,9 @@ section {
         }
         &.prev {
             left: 40px;
+            &.disabled {
+                background-color: $colorViolet;
+            }
             .ico {
                 background: sprite($sprite-ico, 'arrow_left_white');
                 width: 16px;
@@ -144,6 +147,9 @@ section {
         }
         &.next {
             left: 100px;
+            &.disabled {
+                background-color: $colorViolet;
+            }
             .ico {
                 background: sprite($sprite-ico, 'arrow_right_white');
                 width: 16px;

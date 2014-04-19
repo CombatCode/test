@@ -1,5 +1,5 @@
 <section>
-    <h1>Exercise {{ exercise.num }} {{ exercise.title }}</h1>
+    <h1>Exercise {{ exercise.group }} {{ exercise.title }}</h1>
     <h2>{{ exercise.description }}</h2>
     <form ng-submit="submit()">
         <figure ng-repeat="task in exercise.tasks">
@@ -20,8 +20,8 @@
     <ul class="tips">
         <li ng-repeat="task in exercise.tasks | orderBy:'word'">{{ task.word }}</li>
     </ul>
-    <button class="prev"><i class="ico"></i></button>
-    <button class="next"><i class="ico"></i></button>
+    <button class="prev" type="button" ng-click="goBackward()" ng-class="{disabled: !page.has_prev}"><i class="ico"></i></button>
+    <button class="next" type="button" ng-click="goForward()" ng-class="{disabled: !page.has_next}"><i class="ico"></i></button>
     <ul class="path">
         <li class="exercise fake">
             <ol class="spacer"></ol>

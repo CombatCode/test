@@ -1,17 +1,46 @@
 'use strict';
 
 angular.module('iokiApp')
-  .controller('MainCtrl', ['$scope', 'Exercise', function ($scope, Exercise) {
+  .controller('MainCtrl', ['$scope', '$location', 'Exercise', function ($scope, $location, Exercise) {
     /**
      * Definitions
      */
 
+    $scope.search = $location.search();
     $scope.showReset = false;
-    $scope.exercise = Exercise.get(0);
+    $scope.exercise = [];
+    $scope.enabledData = Exercise.list();
+    $scope.page = {
+        current: parseInt($scope.search.ex) || 0
+    }
+    $scope.exercise = Exercise.get($scope.page.current);
 
     /**
      * Functions
      */
+
+    function checkPage() {
+        var first = 0,
+            last = Exercise.list().length - 1,
+            next = $scope.page.current + 1,
+            prev = $scope.page.current - 1;
+
+        if (prev < first) {
+            $scope.page.prev = first;
+            $scope.page.has_prev = false;
+        } else {
+            $scope.page.prev = prev;
+            $scope.page.has_prev = true;
+        }
+
+        if (last < next) {
+            $scope.page.next = last;
+            $scope.page.has_next = false;
+        } else {
+            $scope.page.next = next;
+            $scope.page.has_next = true;
+        }
+    }
 
     function prepareString(str) {
         return str.toLowerCase().replace(/ /g,'');
@@ -46,4 +75,15 @@ angular.module('iokiApp')
 
         $scope.showReset = false;
     };
+
+    $scope.goForward = function() {
+        $location.search('ex', $scope.page.next);
+    };
+
+    $scope.goBackward = function() {
+        $location.search('ex', $scope.page.prev);
+    };
+
+    /** Build next and prev links */
+    checkPage();
   }]);
