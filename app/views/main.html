@@ -28,20 +28,13 @@
             <ol class="spacer"></ol>
             <ol class="spacer"></ol>
         </li>
-        <li class="exercise active">
-            <ol class="head">1</ol>
-            <ol class="spacer"></ol>
-            <ol class="task">&nbsp;</ol>
-            <ol class="spacer"></ol>
-            <ol class="task">&nbsp;</ol>
-            <ol class="spacer"></ol>
-        </li>
-        <li class="exercise">
-            <ol class="head">2</ol>
-            <ol class="spacer"></ol>
-            <ol class="task">&nbsp;</ol>
-            <ol class="spacer"></ol>
-            <ol class="task">&nbsp;</ol>
+        <li ng-repeat="exercise in groups" class="exercise active">
+            <ol class="spacer" ng-hide="$first"></ol>
+            <ol class="head">{{ exercise.group }}</ol>
+            <span class="wrapper" ng-repeat="num in exercise.nums">
+                <ol class="spacer"></ol>
+                <ol class="task" ng-click="getExercise(num )">&nbsp;<i class="active" ng-show="page.current == num"></i></ol>
+            </span>
         </li>
     </ul>
 </section>

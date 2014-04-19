@@ -95,7 +95,7 @@ section {
         border: 2px solid $colorLightViolet;
         list-style: none;
         text-align: center;
-        margin-left: 68px;
+        margin: 0 0 68px 70px;
         li {
             font-size: 14px;
             display: inline-block;
@@ -190,7 +190,7 @@ section {
                 &.spacer {
                     width: 55px;
                     height: 3px;
-                    margin: 0 -5px;
+                    margin: 0 -4px;
                     border-bottom: none;
                     border-left: none;
                     border-right: none;
@@ -202,6 +202,16 @@ section {
                     height: $btnSize;
                     line-height: $btnSize;
                     cursor: pointer;
+                    position: relative;
+                    .active {
+                        background: sprite($sprite-ico, 'marker');
+                        width: 16px;
+                        height: 21px;
+                        display: block;
+                        position: absolute;
+                        top: -30px;
+                        left: -2px;
+                    }
                 }
             }
         }

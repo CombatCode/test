@@ -4,7 +4,7 @@ angular.module('iokiApp')
   .factory('Exercise', function () {
     var exercises = [
         {
-            num: 1,
+            num: 0,
             group: 1,
             title: 'Vocabulary',
             description: 'Label the weather symbols.',
@@ -54,7 +54,7 @@ angular.module('iokiApp')
             ]
         },
         {
-            num: 2,
+            num: 1,
             group: 1,
             title: 'Vocabulary',
             description: 'Label the animals.',
@@ -79,33 +79,47 @@ angular.module('iokiApp')
                     response: 'snake',
                     example: true,
                     status: null
+                },
+                {
+                    img: '/images/ex2/4.png',
+                    word: 'bird',
+                    response: '',
+                    example: false,
+                    status: null
                 }
             ]
         },
         {
-            num: 3,
+            num: 2,
             group: 2,
             title: 'Vocabulary',
-            description: 'Label the animals.',
+            description: 'Label the vegetables.',
             tasks: [
                 {
-                    img: '/images/ex2/1.png',
-                    word: 'panda',
+                    img: '/images/ex3/1.png',
+                    word: 'pumpkin',
                     response: '',
                     example: false,
                     status: null
                 },
                 {
-                    img: '/images/ex2/2.png',
-                    word: 'tiger',
+                    img: '/images/ex3/2.png',
+                    word: 'banana',
                     response: '',
                     example: false,
                     status: null
                 },
                 {
-                    img: '/images/ex2/3.png',
-                    word: 'snake',
-                    response: 'snake',
+                    img: '/images/ex3/3.png',
+                    word: 'grape',
+                    response: '',
+                    example: false,
+                    status: null
+                },
+                {
+                    img: '/images/ex3/4.png',
+                    word: 'apple',
+                    response: 'apple',
                     example: true,
                     status: null
                 }
@@ -126,6 +140,25 @@ angular.module('iokiApp')
             }
 
             return list;
+        },
+        groups: function () {
+            function groupExercises(array) {
+                var groupedArray = [],
+                    groups = {},
+                    i, j, cur;
+
+                for (i = 0, j = array.length; i < j; i++) {
+                    cur = array[i];
+                    if (!(cur.group in groups)) {
+                        groups[cur.group] = {group: cur.group, nums: []};
+                        groupedArray.push(groups[cur.group]);
+                    }
+                    groups[cur.group].nums.push(cur.num);
+                }
+                return groupedArray;
+            }
+
+            return groupExercises(exercises);
         },
         get: function (num) {
             return exercises[num];

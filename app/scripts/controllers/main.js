@@ -10,6 +10,7 @@ angular.module('iokiApp')
     $scope.showReset = false;
     $scope.exercise = [];
     $scope.enabledData = Exercise.list();
+    $scope.groups = Exercise.groups();
     $scope.page = {
         current: parseInt($scope.search.ex) || 0
     }
@@ -82,6 +83,10 @@ angular.module('iokiApp')
 
     $scope.goBackward = function() {
         $location.search('ex', $scope.page.prev);
+    };
+
+    $scope.getExercise = function(num) {
+        $location.search('ex', num);
     };
 
     /** Build next and prev links */
