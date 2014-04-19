@@ -5,6 +5,7 @@
         <figure ng-repeat="task in exercise.tasks">
             <img ng-src="{{ task.img }}">
             <figcaption class="input-prepend" ng-class="{example: task.example}">
+                <strong class="hint" ng-show="task.example">Example</strong>
                 <strong>{{ $index + 1 }}.</strong>
                 <input class="span2" type="text" ng-model="task.response">
                 <div class="status" ng-switch on="task.status">

@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('iokiApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$scope', 'Exercise', function ($scope, Exercise) {
     /**
      * Definitions
      */
 
     $scope.showReset = false;
+    $scope.exercise = Exercise.get(0);
 
     /**
      * Functions
@@ -37,63 +38,12 @@ angular.module('iokiApp')
         var i;
 
         for (i = $scope.exercise.tasks.length; i--;) {
-            $scope.exercise.tasks[i].response = '';
-            $scope.exercise.tasks[i].status = null;
+            if (!$scope.exercise.tasks[i].example) {
+                $scope.exercise.tasks[i].response = '';
+                $scope.exercise.tasks[i].status = null;
+            }
         }
 
         $scope.showReset = false;
     };
-    /**
-     * Temporary models
-     */
-
-    $scope.exercise = {
-        num: 1,
-        title: 'Vocabulary',
-        description: 'Label the weather symbols.',
-        tasks: [
-            {
-                img: '/images/ex1/1.png',
-                word: 'foggy',
-                response: '',
-                example: false,
-                status: null
-            },
-            {
-                img: '/images/ex1/2.png',
-                word: 'raining',
-                response: '',
-                example: false,
-                status: null
-            },
-            {
-                img: '/images/ex1/3.png',
-                word: 'sunny',
-                response: '',
-                example: false,
-                status: null
-            },
-            {
-                img: '/images/ex1/4.png',
-                word: 'cloudy',
-                response: '',
-                example: false,
-                status: null
-            },
-            {
-                img: '/images/ex1/5.png',
-                word: 'windy',
-                response: '',
-                example: false,
-                status: null
-            },
-            {
-                img: '/images/ex1/6.png',
-                word: 'snowing',
-                response: '',
-                example: false,
-                status: null
-            }
-        ]
-    };
-  });
+  }]);
