@@ -17,7 +17,7 @@
         <button class="reset" type="button" ng-click="reset()" ng-show="showReset"><i class="ico"></i></button>
     </form>
     <ul class="tips">
-        <li ng-repeat="task in exercise.tasks">{{ task.word }}</li>
+        <li ng-repeat="task in exercise.tasks | orderBy:'word'">{{ task.word }}</li>
     </ul>
     <button class="prev"><i class="ico"></i></button>
     <button class="next"><i class="ico"></i></button>
