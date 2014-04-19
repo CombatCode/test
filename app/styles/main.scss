@@ -8,6 +8,8 @@ $articlePaddingLeft: 20px;
 
 $colorBlue: #2f9ec8; 
 $colorViolet: #4655ad;
+$colorLightBlue: #e6eaee; 
+$colorLightViolet: #d2dde3;
 
 /**
  * Imports
@@ -54,16 +56,39 @@ section {
             }
             figcaption {
                 display: block;
-                &.selected {
-                    background-color: red;
+                padding: 10px;
+                &.example {
+                    background-color: $colorLightBlue;
+                    border: 2px solid $colorLightViolet;
+                }
+                .span2 {
+                    width: 60px;
+                    margin-left: 10px;
+                }
+                .status {
+                    display: inline-block;
+                    vertical-align: bottom;
+                    width: 21px;
+                    height: 21px;
+                    .icon {
+                        width: 21px;
+                        height: 20px;
+                        display: inline-block;
+                        &.success {
+                            background: sprite($sprite-ico, 'success');
+                        }
+                        &.fail {
+                            background: sprite($sprite-ico, 'fail');
+                        }
+                    }
                 }
             }
         }
     }
     ul.tips {
         width: 700px;
-        background-color: #e6eaee;
-        border: 2px solid #d2dde3;
+        background-color: $colorLightBlue;
+        border: 2px solid $colorLightViolet;
         list-style: none;
         text-align: center;
         margin-left: 68px;
@@ -91,6 +116,15 @@ section {
             bottom: 18px;
             .ico {
                 background: sprite($sprite-ico, 'tick_white');
+                width: 24px;
+                height: 24px;
+            }
+        }
+        &.reset {
+            right: 32px;
+            bottom: 18px;
+            .ico {
+                background: sprite($sprite-ico, 'refresh_white');
                 width: 24px;
                 height: 24px;
             }

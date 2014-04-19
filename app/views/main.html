@@ -1,49 +1,24 @@
 <section>
-    <h1>Exercise 3 Vocabulary</h1>
-    <h2>Label the weather symbols.</h2>
-    <form>
-        <figure>
-            <img src="/images/ex1/1.png">
-            <figcaption class="input-prepend">
-                <strong>1</strong>
-                <input class="span2" type="text">
-                <!-- Description -->
+    <h1>Exercise {{ exercise.num }} {{ exercise.title }}</h1>
+    <h2>{{ exercise.description }}</h2>
+    <form ng-submit="submit()">
+        <figure ng-repeat="task in exercise.tasks">
+            <img ng-src="{{ task.img }}">
+            <figcaption class="input-prepend" ng-class="{example: task.example}">
+                <strong>{{ $index + 1 }}.</strong>
+                <input class="span2" type="text" ng-model="task.response">
+                <div class="status" ng-switch on="task.status">
+                    <i class="icon success" ng-switch-when="success"></i>
+                    <i class="icon fail" ng-switch-when="fail"></i>
+                </div>
             </figcaption>
         </figure>
-        <figure class="span3">
-            <img src="/images/ex1/1.png">
-            <figcaption class="input-prepend">
-                <strong>1</strong>
-                <input class="span2" type="text">
-                <!-- Description -->
-            </figcaption>
-        </figure>
-        <figure class="span3">
-            <img src="/images/ex1/1.png">
-            <figcaption class="input-prepend">
-                <strong>1</strong>
-                <input class="span2" type="text">
-                <!-- Description -->
-            </figcaption>
-        </figure>
-        <figure class="span3">
-            <img src="/images/ex1/1.png">
-            <figcaption class="input-prepend">
-                <strong>1</strong>
-                <input class="span2" type="text">
-                <!-- Description -->
-            </figcaption>
-        </figure>
+        <button class="confirm" type="submit" ng-show="!showReset"><i class="ico"></i></button>
+        <button class="reset" type="button" ng-click="reset()" ng-show="showReset"><i class="ico"></i></button>
     </form>
     <ul class="tips">
-        <li>snowing</li>
-        <li>cloudy</li>
-        <li>raining</li>
-        <li>foggy</li>
-        <li>windy</li>
-        <li>sunny</li>
+        <li ng-repeat="task in exercise.tasks">{{ task.word }}</li>
     </ul>
-    <button class="confirm"><i class="ico"></i></button>
     <button class="prev"><i class="ico"></i></button>
     <button class="next"><i class="ico"></i></button>
     <ul class="path">
