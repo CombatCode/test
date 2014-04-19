@@ -1,5 +1,7 @@
 # English vocabulary exercises
 
+[Demo](http://hostadmin.pl/#/?ex=0)
+
 ## Basic requirements:
 
  - grunt
@@ -21,11 +23,3 @@
 
 ### By Grunt web server
 ```$: grunt server```
-
-
-### Manually in the browser
-```$: grunt build```
-
-```$: cd dist/```
-
-Open index.html in your favorite browser
