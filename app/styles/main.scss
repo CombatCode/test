@@ -1,0 +1,165 @@
+/**
+ * Definitions
+ */
+
+$articleWidth: 968px;
+$articlePaddingTop: 5px;
+$articlePaddingLeft: 20px;
+
+$colorBlue: #2f9ec8; 
+$colorViolet: #4655ad;
+
+/**
+ * Imports
+ */
+
+@import "mixins";
+@import "sprites";
+
+/**
+ * Main styles
+ */
+
+body {
+    color: #333;
+}
+article {
+    $thisWidth: $articleWidth - ($articlePaddingLeft * 2);
+    width: $thisWidth;
+    margin-left: $thisWidth / -2;
+    padding: $articlePaddingTop $articlePaddingLeft;
+    position: absolute;
+    left: 50%;
+    background-color: #f6f5f5;
+}
+section {
+    h1 {
+        color: #4654AB;
+        font-size: 24px;
+        margin: 10px 0;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    form {
+        padding: 0 20px;
+        figure {
+            display: inline-block;
+            margin: 10px 48px;
+            width: 194px;
+            > img {
+                display: block;
+                width: 194px;
+                margin-bottom: 10px;
+            }
+            figcaption {
+                display: block;
+                &.selected {
+                    background-color: red;
+                }
+            }
+        }
+    }
+    ul.tips {
+        width: 700px;
+        background-color: #e6eaee;
+        border: 2px solid #d2dde3;
+        list-style: none;
+        text-align: center;
+        margin-left: 68px;
+        li {
+            font-size: 14px;
+            display: inline-block;
+            line-height: 30px;
+            margin: 0 10px;
+        }
+    }
+    button {
+        $btnSize: 36px;
+        @include border-radius($btnSize);
+        width: $btnSize;
+        height: $btnSize;
+        background-color: $colorBlue;
+        display: block;
+        border: none;
+        position: absolute;
+        cursor: pointer;
+        padding: 5px;
+        outline: none;
+        &.confirm {
+            right: 32px;
+            bottom: 18px;
+            .ico {
+                background: sprite($sprite-ico, 'tick_white');
+                width: 24px;
+                height: 24px;
+            }
+        }
+        &.prev {
+            left: 40px;
+            .ico {
+                background: sprite($sprite-ico, 'arrow_left_white');
+                width: 16px;
+                height: 16px;
+                margin: 0 5px;
+            }
+        }
+        &.next {
+            left: 100px;
+            .ico {
+                background: sprite($sprite-ico, 'arrow_right_white');
+                width: 16px;
+                height: 16px;
+                margin: 0 8px;
+            }
+        }
+        .ico {
+            display: block;
+        }
+    }
+    ul.path {
+        list-style: none;
+        li.exercise {
+            display: inline-block;
+            padding: 0;
+            &.active {
+                ol {
+                    border: 4px solid $colorViolet;
+                    color: $colorViolet;
+                }
+            }
+            ol {
+                display: inline-block;
+                border: 4px solid $colorBlue;
+                color: $colorBlue;
+                padding: 0;
+                &.head {
+                    $btnSize: 27px;
+                    @include border-radius($btnSize);
+                    width: $btnSize;
+                    height: $btnSize;
+                    line-height: $btnSize;
+                    text-align: center;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+                &.spacer {
+                    width: 55px;
+                    height: 3px;
+                    margin: 0 -5px;
+                    border-bottom: none;
+                    border-left: none;
+                    border-right: none;
+                }
+                &.task {
+                    $btnSize: 11px;
+                    @include border-radius($btnSize);
+                    width: $btnSize;
+                    height: $btnSize;
+                    line-height: $btnSize;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
