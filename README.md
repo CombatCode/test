@@ -27,7 +27,7 @@
 ### Local, without the server
 Only Firefox is able to load external files by XMLHttpRequest, Chrome is failing because of CORS.
 
-Download minified application by ```$: grunt build``` from [http://hostadmin.pl/dist.zip](http://hostadmin.pl/dist.zip),
+Download minified application by ```$: grunt build``` from [http://apphost.co.pl/dist.zip](http://apphost.co.pl/dist.zip),
 unzip and open index.html in your Firefox browser.
 
 Check this out, how applications looks live: [Demo](http://apphost.co.pl/#/?ex=0)
