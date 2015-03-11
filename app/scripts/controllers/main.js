@@ -13,7 +13,7 @@ angular.module('iokiApp')
     $scope.groups = Exercise.groups();
     $scope.page = {
         current: parseInt($scope.search.ex) || 0
-    }
+    };
     $scope.exercise = Exercise.get($scope.page.current);
 
     /**
